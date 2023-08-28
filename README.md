@@ -1,0 +1,2 @@
+# monorope-component
+component template
