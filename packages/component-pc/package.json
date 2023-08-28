@@ -1,0 +1,29 @@
+{
+  "name": "component-pc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "unpkg": "dist/index.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {},
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "keywords": [],
+  "author": "yaoxfly",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.3.4",
+    "qs": "^6.11.2",
+    "axios": "^1.4.0",
+    "element-plus": "2.2.16"
+  }
+}

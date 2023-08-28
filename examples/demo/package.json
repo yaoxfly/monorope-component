@@ -1,0 +1,20 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --mode development",
+    "serve": "vite --mode development",
+    "preview": "vite preview",
+    "build": "vue-tsc --noEmit && vite build --mode production",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "yaoxfly",
+  "license": "MIT",
+  "dependencies": {
+    "component-pc": "workspace:^"
+  }
+}
