@@ -22,9 +22,9 @@ module.exports = {
   ],
   rules: {
     /* --vue相关-- */
-    'vue/multi-word-component-names': 'off',
-    'vue/comment-directive': 'off',
-    'no-unused-vars': 'off',
+    'vue/multi-word-component-names': 0,
+    'vue/comment-directive': 0,
+    'no-unused-vars': 0,
     'vue/no-parsing-error': [
       2,
       {
@@ -34,13 +34,14 @@ module.exports = {
     ],
 
     /* --ECMAScript 6 ES6-- */
-    'no-useless-escape': 'off', // 关闭转义
+    'no-useless-escape': 0, // 关闭转义
     'no-unused-expressions': [
       'error',
       { allowShortCircuit: true, allowTernary: true }
     ],
 
     /* --typescript -- */
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-unused-vars': 1
   }
 }

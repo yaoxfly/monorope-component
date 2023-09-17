@@ -6,7 +6,9 @@
   "author": "yaoxfly",
   "scripts": {
     "demo": "pnpm  -filter demo  dev",
-    "build": "node ./scripts/build.mjs",
+    "build:dev": "cross-env NODE_ENV=development  node  ./scripts/build.mjs",
+    "build:test": "cross-env NODE_ENV=test  node  ./scripts/build.mjs",
+    "build": "cross-env NODE_ENV=production  node  ./scripts/build.mjs",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
   },
   "dependencies": {
@@ -28,6 +30,8 @@
     "@vitejs/plugin-vue-jsx": "3.0.1",
     "autoprefixer": "^10.4.14",
     "browserslist": "^4.21.9",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
     "eslint": "^8.45.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",

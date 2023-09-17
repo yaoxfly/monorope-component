@@ -10,6 +10,8 @@ defineOptions({
   name: 'YxButton'
 })
 
-console.log('我是按钮组件3')
-const text = ref('我是按钮组件3')
+console.log('我是按钮组件')
+const text = ref('我是按钮组件1')
+console.log(import.meta.env, '环境变量')
+
 </script>
