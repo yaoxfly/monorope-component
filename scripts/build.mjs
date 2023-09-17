@@ -22,8 +22,8 @@ const rootDir = path.resolve(__dirname, '../')
 const outDir = resolve('packages/component-pc/dist')
 const baseConfig = defineConfig(({ mode }) => {
   const env = viteLoadEnv(mode, process.cwd())
-  console.log(env, '环境变量')
   return {
+    mode: env.VITE_USER_NODE_ENV,
     plugins: [
       vue(),
       dts({
@@ -60,16 +60,17 @@ const baseConfig = defineConfig(({ mode }) => {
           exports: 'named' /** Disable warning for default imports */
         }
       }
+    },
+    esbuild: {
+      drop: env.VITE_USER_NODE_ENV === 'production' ? ['console', 'debugger'] : []
     }
-    // esbuild: {
-    //   drop: ['console', 'debugger']
-    // }
   }
 })
 
 async function main () {
   const { NODE_ENV: mode } = await loadEnv()
   await build(baseConfig({ mode }))
+  console.log(import.meta.env)
   // await copyFiles()
 }
 
