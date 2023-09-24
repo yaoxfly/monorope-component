@@ -24,7 +24,7 @@
     ]
     //元素隐式具有 “any“ 类型，因为类型为 “any“ 的表达式不能用于索引类型
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "utils/**/*"],
   "exclude": ["node_modules", "dist"],
   "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue"],
   "allowSyntheticDefaultImports": true

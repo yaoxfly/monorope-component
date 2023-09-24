@@ -70,7 +70,7 @@ const baseConfig = defineConfig(({ mode }) => {
 async function main () {
   const { NODE_ENV: mode } = await loadEnv()
   await build(baseConfig({ mode }))
-  console.log(import.meta.env)
+  // console.log(mode)
   // await copyFiles()
 }
 
