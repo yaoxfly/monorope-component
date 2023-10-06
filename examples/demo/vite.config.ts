@@ -31,6 +31,7 @@ const externalGlobalsConfig = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig({
   // 部署在二级目录下，也需要加个二级目录
+
   base: loadEnv(mode, process.cwd()).VITE_APP_PUBLIC_PATH,
   /**
    * 在本地包上工作时（通过检测包路径是否包含 node_modules ），Vite 假定它是源代码，所以 HMR 也在那里工作，
@@ -54,48 +55,52 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
           title: 'Vue App',
           //  出现souceMap找不情况，需换链接, 如果是把资源文件放在自己的库中，需下载对应的map文件。
           cdn: {
-            css: [
-              // element-plus
-              { url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16/dist/index.css' }
-            ],
-            js: [
-              {
-                // vue
-                url: 'https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js'
-              },
-              {
-                // vue-demi pinia 前置插件
-                url: 'https://cdn.jsdelivr.net/npm/vue-demi@0.13.11/lib/index.iife.js'
-              },
-              {
-                // pinia
-                url: 'https://cdn.jsdelivr.net/npm/pinia@2.1.6/dist/pinia.iife.prod.js'
-              },
-              {
-                // vue-router
-                url: 'https://cdn.jsdelivr.net/npm/vue-router@4.2.4/dist/vue-router.global.prod.js'
-              },
-              {
-                // axios
-                url: 'https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js'
-              },
-              {
-                // qs
-                url: 'https://cdn.jsdelivr.net/npm/qs@6.11.2/dist/qs.min.js'
-              },
-              {
-                // shared  vueuse/core 前置插件
-                url: 'https://cdn.jsdelivr.net/npm/@vueuse/shared@10.2.1/index.iife.min.js'
-              },
-              {
-                // @vueuse/core
-                url: 'https://cdn.jsdelivr.net/npm/@vueuse/core@10.2.1/index.iife.min.js'
-              },
-              {
-                // element-plus
-                url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16'
-              }
-            ]
+            css: loadEnv(mode, process.cwd()).VITE_APP_CURRENT_MODE !== 'development'
+              ? [
+                  // element-plus
+                  { url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16/dist/index.css' }
+                ]
+              : [],
+            js: loadEnv(mode, process.cwd()).VITE_APP_CURRENT_MODE !== 'development'
+              ? [
+                  {
+                    // vue
+                    url: 'https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js'
+                  },
+                  {
+                    // vue-demi pinia 前置插件
+                    url: 'https://cdn.jsdelivr.net/npm/vue-demi@0.13.11/lib/index.iife.js'
+                  },
+                  {
+                    // pinia
+                    url: 'https://cdn.jsdelivr.net/npm/pinia@2.1.6/dist/pinia.iife.prod.js'
+                  },
+                  {
+                    // vue-router
+                    url: 'https://cdn.jsdelivr.net/npm/vue-router@4.2.4/dist/vue-router.global.prod.js'
+                  },
+                  {
+                    // axios
+                    url: 'https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js'
+                  },
+                  {
+                    // qs
+                    url: 'https://cdn.jsdelivr.net/npm/qs@6.11.2/dist/qs.min.js'
+                  },
+                  {
+                    // shared  vueuse/core 前置插件
+                    url: 'https://cdn.jsdelivr.net/npm/@vueuse/shared@10.2.1/index.iife.min.js'
+                  },
+                  {
+                    // @vueuse/core
+                    url: 'https://cdn.jsdelivr.net/npm/@vueuse/core@10.2.1/index.iife.min.js'
+                  },
+                  {
+                    // element-plus
+                    url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16'
+                  }
+                ]
+              : []
           }
         }
       }
@@ -189,12 +194,8 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
     // progress(), //打包进度条，会覆盖掉打包详情信息，暂时不用了
     checker({
       typescript: true // 检查ts类型
-    }),
-    {
-      ...externalGlobals(externalGlobalsConfig),
-      enforce: 'post', // 放置最后执行，解决和unplugin-auto-import插件冲突问题
-      apply: 'build'
-    }
+    })
+
   ],
   build: {
     target: 'es2015',
@@ -219,7 +220,8 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
           }
         }
       },
-      external: Object.keys(externalGlobalsConfig)
+      external: Object.keys(externalGlobalsConfig),
+      plugins: [externalGlobals(externalGlobalsConfig)]
     }
   },
   server: {
