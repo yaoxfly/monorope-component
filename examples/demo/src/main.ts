@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import '@/assets/css/index.css'
 import ElementPlus from 'element-plus'
 // import ComponentPc from 'component-pc'
+// import { Button } from 'component-pc'
 import ComponentPc from '../../../packages/component-pc/index'
 createApp(App)
   .use(router)

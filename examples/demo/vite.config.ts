@@ -33,9 +33,9 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
   // 部署在二级目录下，也需要加个二级目录
   base: loadEnv(mode, process.cwd()).VITE_APP_PUBLIC_PATH,
   /**
-   * 这是因为在本地包上工作时（通过检测包路径是否包含 node_modules ），Vite 假定它是源代码，所以 HMR 也在那里工作，
+   * 在本地包上工作时（通过检测包路径是否包含 node_modules ），Vite 假定它是源代码，所以 HMR 也在那里工作，
    * 但这也意味着本地包需要导出 ESM。如果不是ESM格式的(例如umd)，那么我们需要将包添加到 optimizeDeps.include .
-   * 这个东西缓存有点严重,要用esm一定要去除这个配置
+   * 这个东西缓存有点严重,开启时，打包component-pc时需重启系统
    * */
   // optimizeDeps: {
   //   include: [

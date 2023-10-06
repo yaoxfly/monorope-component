@@ -1,24 +1,19 @@
 import path from 'path'
 import loadEnv from './dotenv.mjs'
 import { fileURLToPath } from 'url'
-// import fs from 'fs'
 import { build, defineConfig, loadEnv as viteLoadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import autoExport from './autoExport.mjs'
 const __filenameNew = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filenameNew)
-
-// async function copyFiles () {
-//   fs.copyFileSync(resolve('README.md'), resolve('packages/component-pc/README.md'))
-// }
-
-function resolve (...urlOrUrls) {
-  return path.resolve(rootDir, ...urlOrUrls)
-}
-
 // 根目录
 const rootDir = path.resolve(__dirname, '../')
+export function resolve (...urlOrUrls) {
+  return path.resolve(rootDir, ...urlOrUrls)
+}
+autoExport() // 一定要放置在resolve之后
 const outDir = resolve('packages/component-pc/dist')
 const baseConfig = defineConfig(({ mode }) => {
   const env = viteLoadEnv(mode, process.cwd())
