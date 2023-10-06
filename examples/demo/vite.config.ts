@@ -22,7 +22,7 @@ const externalGlobalsConfig = {
   axios: 'axios',
   'vue-demi': 'VueDemi', // 用了pinia必须配置
   'vue-router': 'VueRouter',
-  qs: 'qs',
+  qs: 'qs', // 在monorope架构下一定要用cdn否则打包不成功
   pinia: 'Pinia',
   '@vueuse/core': 'VueUse',
   'element-plus': 'ElementPlus'
