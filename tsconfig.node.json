@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    //允许使用import.meta.env
+    "types": ["vite/client", "node"]
+  },
+  "include": ["scripts/**/*", "typings/env.d.ts"],
+  "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "paths": {
+      //有相对路径的不能继承
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client", "unplugin-vue-define-options/macros-global"]
+  },
+  "include": [
+    "packages",
+    "examples",
+    "vite.config.ts",
+    "typings/env.d.ts",
+    "typings/auto-import.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "examples/cdn-demo"],
+  "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue"],
+  "allowSyntheticDefaultImports": true
+}
