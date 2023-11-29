@@ -9,7 +9,11 @@
     "build:dev": "cross-env NODE_ENV=development  node  ./scripts/build.mjs",
     "build:test": "cross-env NODE_ENV=test  node  ./scripts/build.mjs",
     "build": "cross-env NODE_ENV=production  node  ./scripts/build.mjs",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
+    "clean": "rm -rf node_modules **/*/node_modules"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
   },
   "dependencies": {
     "@vueuse/core": "^10.4.1",
@@ -17,7 +21,6 @@
     "element-plus": "2.3.14",
     "pinia": "^2.1.6",
     "qs": "^6.11.2",
-    "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

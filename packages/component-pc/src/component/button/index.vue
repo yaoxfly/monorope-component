@@ -11,7 +11,7 @@ defineOptions({
 })
 
 console.log('我是按钮组件')
-const text = ref('我是按钮组件1')
+const text = ref('我是按钮组件')
 console.log(import.meta.env, '环境变量')
 
 </script>

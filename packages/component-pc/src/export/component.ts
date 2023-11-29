@@ -1,8 +1,8 @@
 import type { App, Plugin } from 'vue'
-export const modules = import.meta.glob(['../component/**/*.ts', '!../component/index.ts'], { eager: true })
+const modules = import.meta.glob(['../component/**/*.ts', '!../component/index.ts'], { eager: true })
 export const components = [] as Plugin[]
 for (const i in modules) {
-  const item:any = modules[i]
+  const item: any = modules[i]
   components.push(item.default)
 }
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')

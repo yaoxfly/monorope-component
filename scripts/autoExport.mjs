@@ -14,9 +14,9 @@ function autoExport () {
       components.push(item)
     }
   })
-  fs.writeFileSync(index, '')
+  fs.writeFileSync(index, '/** 当前文件不需要任何手动编辑，已做了自动化处理 */\n')
   components.forEach(res => {
-    fs.appendFileSync(index, `export * from './${res}'\n`)
+    fs.appendFileSync(index, `export * from './${res}/index'\n`)
   })
 }
 export default autoExport
