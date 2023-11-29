@@ -57,49 +57,49 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
           cdn: {
             css: loadEnv(mode, process.cwd()).VITE_APP_CURRENT_MODE !== 'development'
               ? [
-                  // element-plus
-                  { url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16/dist/index.css' }
-                ]
+                // element-plus
+                { url: 'https://cdn.jsdelivr.net/npm/element-plus@2.3.14/dist/index.css' }
+              ]
               : [],
             js: loadEnv(mode, process.cwd()).VITE_APP_CURRENT_MODE !== 'development'
               ? [
-                  {
-                    // vue
-                    url: 'https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js'
-                  },
-                  {
-                    // vue-demi pinia 前置插件
-                    url: 'https://cdn.jsdelivr.net/npm/vue-demi@0.13.11/lib/index.iife.js'
-                  },
-                  {
-                    // pinia
-                    url: 'https://cdn.jsdelivr.net/npm/pinia@2.1.6/dist/pinia.iife.prod.js'
-                  },
-                  {
-                    // vue-router
-                    url: 'https://cdn.jsdelivr.net/npm/vue-router@4.2.4/dist/vue-router.global.prod.js'
-                  },
-                  {
-                    // axios
-                    url: 'https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js'
-                  },
-                  {
-                    // qs
-                    url: 'https://cdn.jsdelivr.net/npm/qs@6.11.2/dist/qs.min.js'
-                  },
-                  {
-                    // shared  vueuse/core 前置插件
-                    url: 'https://cdn.jsdelivr.net/npm/@vueuse/shared@10.2.1/index.iife.min.js'
-                  },
-                  {
-                    // @vueuse/core
-                    url: 'https://cdn.jsdelivr.net/npm/@vueuse/core@10.2.1/index.iife.min.js'
-                  },
-                  {
-                    // element-plus
-                    url: 'https://cdn.jsdelivr.net/npm/element-plus@2.2.16'
-                  }
-                ]
+                {
+                  // vue
+                  url: 'https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js'
+                },
+                {
+                  // vue-demi pinia 前置插件
+                  url: 'https://cdn.jsdelivr.net/npm/vue-demi@0.13.11/lib/index.iife.js'
+                },
+                {
+                  // pinia
+                  url: 'https://cdn.jsdelivr.net/npm/pinia@2.1.6/dist/pinia.iife.prod.js'
+                },
+                {
+                  // vue-router
+                  url: 'https://cdn.jsdelivr.net/npm/vue-router@4.2.4/dist/vue-router.global.prod.js'
+                },
+                {
+                  // axios
+                  url: 'https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js'
+                },
+                {
+                  // qs
+                  url: 'https://cdn.jsdelivr.net/npm/qs@6.11.2/dist/qs.min.js'
+                },
+                {
+                  // shared  vueuse/core 前置插件
+                  url: 'https://cdn.jsdelivr.net/npm/@vueuse/shared@10.2.1/index.iife.min.js'
+                },
+                {
+                  // @vueuse/core
+                  url: 'https://cdn.jsdelivr.net/npm/@vueuse/core@10.2.1/index.iife.min.js'
+                },
+                {
+                  // element-plus
+                  url: 'https://cdn.jsdelivr.net/npm/element-plus@2.3.14'
+                }
+              ]
               : []
           }
         }
@@ -177,7 +177,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
           ]
         }
       ],
-      dts: 'src/auto-import.d.ts',
+      dts: '../../typings/auto-import.d.ts',
       vueTemplate: false,
       ignore: ['h'], // 解决开发环境h报错
       eslintrc: {
@@ -189,7 +189,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
     viteMockServe({
       // default
       mockPath: 'src/mock',
-      watchFiles: true
+      watchFiles: false
     }),
     // progress(), //打包进度条，会覆盖掉打包详情信息，暂时不用了
     checker({

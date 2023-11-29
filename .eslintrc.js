@@ -21,6 +21,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    indent: ['off', 2],
     /* --vue相关-- */
     'vue/multi-word-component-names': 0,
     'vue/comment-directive': 0,
