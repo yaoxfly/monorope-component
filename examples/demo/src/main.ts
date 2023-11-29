@@ -2,13 +2,13 @@ import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import '@/assets/css/index.css'
-import ElementPlus from 'element-plus'
-// import ComponentPc from 'component-pc'
-// import { Button } from 'component-pc'
-import ComponentPc from '../../../packages/component-pc/index'
+import ElementPlus, { ElButton } from 'element-plus'
+import ComponentPc, { Button } from 'component-pc'
+console.log(Button, ElButton)
+// import ComponentPc from '../../../packages/component-pc/index'
 createApp(App)
   .use(router)
   .use(createPinia())
   .use(ElementPlus)
-  .use(ComponentPc)
+  .use(Button)
   .mount('#app')
