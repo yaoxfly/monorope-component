@@ -3,8 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "paths": {
-      //有相对路径的不能继承
-      "@/*": ["./src/*"]
+      "@/*": ["./examples/demo/src/*"]
     },
     "types": ["vite/client", "unplugin-vue-define-options/macros-global"]
   },
