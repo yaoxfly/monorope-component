@@ -12,3 +12,4 @@ Dockerfile
 stats.html
 tailwind.config.js
 examples/cdn-demo
+project/component-pc/dist

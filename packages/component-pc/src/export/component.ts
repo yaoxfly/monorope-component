@@ -1,6 +1,6 @@
 import type { App, Plugin } from 'vue'
 const modules = import.meta.glob(['../component/**/*.ts', '!../component/index.ts'], { eager: true })
-export const components = [] as Plugin[]
+const components = [] as Plugin[]
 for (const i in modules) {
   const item: any = modules[i]
   components.push(item.default)
