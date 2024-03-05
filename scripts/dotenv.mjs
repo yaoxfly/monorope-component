@@ -13,7 +13,7 @@ function load (parseEnvObj, prefix = '') {
 }
 
 function loadEnv (options = {}) {
-  if (process.env.NODE_ENV === 'local') {
+  if (process.env.ENV === 'local') {
     // ↓如果第一个参数传入'local'，就报错：
     // ↓"local "不能用作模式名称，因为它与``.env文件的.local后缀冲突。
     throw new Error('"local" cannot be used as a mode name because it conflicts with ' +
@@ -23,20 +23,19 @@ function loadEnv (options = {}) {
   const baseDir = process.cwd()
   const env = {}
   const envFiles = [
-    /** mode local file  .env.[mode].local */ `.env.${process.env.NODE_ENV}.local`,
-    /** mode file .env.[mode] */ `.env.${process.env.NODE_ENV}`,
+    /** mode local file  .env.[mode].local */ `.env.${process.env.ENV}.local`,
+    /** mode file .env.[mode] */ `.env.${process.env.ENV}`,
     /** local file .env.local */ '.env.local',
     /** default file  .env */ '.env'
   ]
+  for (const file of envFiles) {
+    load(dotenv.config({ path: `${baseDir}/${file}` }), prefix)
+  }
 
   for (const key in process.env) {
     if (env[key] === undefined) {
       env[key] = process.env[key]
     }
-  }
-
-  for (const file of envFiles) {
-    load(dotenv.config({ path: `${baseDir}/${file}` }), prefix)
   }
 
   return env

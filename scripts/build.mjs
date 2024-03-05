@@ -1,7 +1,7 @@
 import path from 'path'
 import loadEnv from './dotenv.mjs'
 import { fileURLToPath } from 'url'
-import { build, defineConfig, loadEnv as viteLoadEnv } from 'vite'
+import { build, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
@@ -20,10 +20,9 @@ export function resolve (...urlOrUrls) {
 }
 autoExport() // 一定要放置在resolve之后
 
-const baseConfig = defineConfig(({ mode }) => {
-  const env = viteLoadEnv(mode, process.cwd())
+const baseConfig = defineConfig(env => {
   return {
-    mode: env.VITE_USER_NODE_ENV,
+    mode: env.VITE_APP_CURRENT_MODE,
     plugins: [
       vue(),
       dts({
@@ -77,14 +76,14 @@ const baseConfig = defineConfig(({ mode }) => {
     ],
     build: buildConfig,
     esbuild: {
-      drop: env.VITE_USER_NODE_ENV === 'production' ? ['console', 'debugger'] : []
+      // drop: env.VITE_APP_CURRENT_MODE === 'production' ? ['console', 'debugger'] : []
     }
   }
 })
 
 async function main () {
-  const { NODE_ENV: mode } = await loadEnv()
-  await build(baseConfig({ mode }))
+  const env = await loadEnv()
+  await build(baseConfig(env))
 }
 
 main()
