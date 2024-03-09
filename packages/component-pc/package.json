@@ -1,21 +1,27 @@
 {
-  "name": "component-pc",
+  "name": "@yaoxfly/component-pc",
   "version": "1.0.0",
   "description": "A Component Library for Vue 3",
   "main": "dist/cjs/index.js",
-  "module": "dist/es/index.mjs",
+  "module": "dist/es/component-pc/index.mjs",
   "unpkg": "dist/iife/index.js",
   "jsdelivr": "dist/iife/index.js",
   "types": "dist/types/index.d.ts",
-  "style": "dist/index.css",
-  "sideEffects": false,
+  "style": "dist/theme-chalk/index.css",
+  "sideEffects": [
+    "dist/*",
+    "theme-chalk/*.css",
+    "theme-chalk/src/*.scss",
+    "es/component-pc/*.css",
+    "cjs/*.css"
+  ],
   "files": [
     "dist"
   ],
   "scripts": {},
   "exports": {
     ".": {
-      "import": "./dist/es/index.mjs",
+      "import": "./dist/es/component-pc/index.mjs",
       "require": "./dist/cjs/index.js",
       "types": "./dist/types/index.d.ts"
     },
@@ -28,10 +34,13 @@
     "access": "public"
   },
   "peerDependencies": {
-    "vue": "^3.3.4",
-    "qs": "^6.11.2",
     "axios": "^1.4.0",
     "element-plus": "2.3.14",
+    "qs": "^6.11.2",
+    "vue": "^3.3.4",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@yaoxfly/theme-chalk": "workspace:^"
   }
 }

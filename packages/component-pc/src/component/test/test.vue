@@ -1,15 +1,17 @@
 <template>
-  <div :class="$options.name">
-    <el-button> {{ text }}</el-button>
+  <div :class="className">
+    {{ text }}
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
+import { toKebabCase } from '../../utils/common'
 defineOptions({
   name: 'YxTest'
 })
+const className = computed(() => toKebabCase(getCurrentInstance()?.proxy?.$options.name))
+console.log(className)
 console.log('按需测试')
 const text = ref('按需测试')
-
 </script>
