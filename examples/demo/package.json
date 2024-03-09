@@ -15,6 +15,6 @@
   "author": "yaoxfly",
   "license": "MIT",
   "dependencies": {
-    "component-pc": "workspace:^"
+    "@yaoxfly/component-pc": "workspace:^"
   }
 }

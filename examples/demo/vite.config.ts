@@ -18,14 +18,14 @@ import checker from 'vite-plugin-checker'
 import externalGlobals from 'rollup-plugin-external-globals'
 const browserslistConfig = browserslist.loadConfig({ path: '../../' }) // npx browserslist "> 0.04%, last 2 versions,Firefox ESR,not dead" 查询兼容的浏览器
 const externalGlobalsConfig = {
-  vue: 'Vue',
-  axios: 'axios',
-  'vue-demi': 'VueDemi', // 用了pinia必须配置
-  'vue-router': 'VueRouter',
-  qs: 'qs', // 在monorope架构下一定要用cdn否则打包不成功
-  pinia: 'Pinia',
-  '@vueuse/core': 'VueUse',
-  'element-plus': 'ElementPlus'
+  // vue: 'Vue',
+  // axios: 'axios',
+  // 'vue-demi': 'VueDemi', // 用了pinia必须配置
+  // 'vue-router': 'VueRouter',
+  qs: 'qs' // 在monorope架构下一定要用cdn否则打包不成功
+  // pinia: 'Pinia',
+  // '@vueuse/core': 'VueUse',
+  // 'element-plus': 'ElementPlus'
 
 }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -208,7 +208,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
         drop_debugger: true
       }
     },
-    chunkSizeWarningLimit: 1000, // chunks 大小限制
+    chunkSizeWarningLimit: 2000, // chunks 大小限制
     rollupOptions: {
       output: {
         chunkFileNames: 'static/js/[name]-[hash].js',

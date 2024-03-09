@@ -18,6 +18,7 @@ export default defineComponent({
         <>
 
           <yx-button ></yx-button>
+          <yx-test ></yx-test>
           <div class='tw-flex tw-justify-center  tw-items-center  tw-bg-gray-50  tw-text-black'>
               <span > 我是首页{config.server}</span>
           </div>
