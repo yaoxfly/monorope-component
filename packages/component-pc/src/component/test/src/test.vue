@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { toKebabCase } from '../../utils/common'
+import { ref, getCurrentInstance } from 'vue'
+import { toKebabCase } from '../../../utils/common'
 defineOptions({
-  name: 'YxButton'
+  name: 'YxTest'
 })
 const className = computed(() => toKebabCase(getCurrentInstance()?.proxy?.$options.name))
-console.log('我是按钮组件')
-const text = ref('我是按钮组件')
-console.log(import.meta.env, '环境变量')
+console.log(className)
+console.log('按需测试')
+const text = ref('按需测试')
 </script>
