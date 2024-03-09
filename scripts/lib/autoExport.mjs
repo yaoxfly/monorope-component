@@ -2,7 +2,7 @@
  * @author yx
  */
 import fs from 'fs'
-import { resolve } from './build.mjs'
+import { resolve } from '../build.mjs'
 function autoExport () {
   const otherContents = resolve('packages/component-pc/src/component')
   const index = resolve('packages/component-pc/src/component/index.ts')
@@ -16,7 +16,7 @@ function autoExport () {
   })
   fs.writeFileSync(index, '/** 当前文件不需要任何手动编辑，已做了自动化处理 */\n')
   components.forEach(res => {
-    fs.appendFileSync(index, `export * from './${res}'\n`)
+    fs.appendFileSync(index, `export * from './${res}/src'\n`)
   })
 }
 export default autoExport

@@ -1,5 +1,5 @@
 import path from 'path'
-import loadEnv from './dotenv.mjs'
+import loadEnv from './lib/dotenv.mjs'
 import { fileURLToPath } from 'url'
 import { build, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -7,9 +7,11 @@ import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer' // 性能分析，打开stats.html，查看打包情况
-import autoExport from './autoExport.mjs'
+import autoExport from './lib/autoExport.mjs'
 import checker from 'vite-plugin-checker'
-import buildConfig from './buildConfig.mjs'
+import buildConfig from './lib/buildConfig.mjs'
+import copyFiles from './lib/copyFiles.mjs'
+
 const __filenameNew = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filenameNew)
 // 根目录
@@ -73,10 +75,11 @@ const baseConfig = defineConfig(env => {
       checker({
         typescript: true // 检查ts类型
       })
+
     ],
     build: buildConfig,
     esbuild: {
-      // drop: env.VITE_APP_CURRENT_MODE === 'production' ? ['console', 'debugger'] : []
+      drop: env.VITE_APP_CURRENT_MODE === 'production' ? ['console', 'debugger'] : []
     }
   }
 })
@@ -84,6 +87,25 @@ const baseConfig = defineConfig(env => {
 async function main () {
   const env = await loadEnv()
   await build(baseConfig(env))
+  await copyFiles(
+    {
+      sourceDir: resolve('packages/component-pc/dist'),
+      targetDir: resolve('packages/component-pc/dist/theme-chalk'),
+      fileExtensions: ['.css'],
+      tips: 'packages',
+      exclude: ['theme-chalk']
+    }
+  )
+
+  await copyFiles(
+    {
+      sourceDir: resolve('packages/theme-chalk/src'),
+      targetDir: resolve('packages/component-pc/dist/theme-chalk/src'),
+      fileExtensions: ['.scss'],
+      tips: 'packages',
+      exclude: ['theme-chalk']
+    }
+  )
 }
 
 main()
