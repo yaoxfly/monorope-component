@@ -11,7 +11,7 @@ import legacy from '@vitejs/plugin-legacy'
 import AutoImport from 'unplugin-auto-import/vite'
 import postcssImport from 'postcss-import'
 import autoprefixer from 'autoprefixer'
-import tailwindcss from 'tailwindcss'
+// import tailwindcss from 'tailwindcss'  //影响第三方库样式--暂不使用
 // import progress from 'vite-plugin-progress'
 import browserslist from 'browserslist' // 统一js/css兼容性
 import checker from 'vite-plugin-checker'
@@ -23,7 +23,7 @@ const externalGlobalsConfig = {
   // axios: 'axios',
   // 'vue-demi': 'VueDemi', // 用了pinia必须配置
   // 'vue-router': 'VueRouter',
-  qs: 'qs' // 在monorope架构下一定要用cdn否则打包不成功
+  // qs: 'qs' // 在monorope架构要用cdn，或者下@ljharb/eslint-config，否则打包不成功
   // pinia: 'Pinia',
   // '@vueuse/core': 'VueUse',
   // 'element-plus': 'ElementPlus'
@@ -242,8 +242,8 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
     postcss: {
       plugins: [
         postcssImport,
-        autoprefixer,
-        tailwindcss
+        autoprefixer
+        // tailwindcss
       ]
     }
   }
