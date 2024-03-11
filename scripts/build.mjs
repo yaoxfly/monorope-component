@@ -20,7 +20,11 @@ const rootDir = path.resolve(__dirname, '../')
 export function resolve (...urlOrUrls) {
   return path.resolve(rootDir, ...urlOrUrls)
 }
-autoExport() // 一定要放置在resolve之后
+
+autoExport({
+  path: 'packages/component-pc/src/component',
+  output: 'packages/component-pc/src/component/index.ts'
+}) // 一定要放置在resolve之后
 
 const baseConfig = defineConfig(env => {
   return {

@@ -1,11 +1,12 @@
-/** @description  按需导出
+/** @description  自动按需导出
  * @author yx
  */
 import fs from 'fs'
 import { resolve } from '../build.mjs'
-function autoExport () {
-  const otherContents = resolve('packages/component-pc/src/component')
-  const index = resolve('packages/component-pc/src/component/index.ts')
+function autoExport (config) {
+  const { path, output } = config || {}
+  const otherContents = resolve(path)
+  const index = resolve(output)
   const components = []
   const files = fs.readdirSync(otherContents)
   files.forEach(function (item) {

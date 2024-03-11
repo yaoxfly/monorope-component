@@ -16,6 +16,7 @@ import tailwindcss from 'tailwindcss'
 import browserslist from 'browserslist' // 统一js/css兼容性
 import checker from 'vite-plugin-checker'
 import externalGlobals from 'rollup-plugin-external-globals'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 const browserslistConfig = browserslist.loadConfig({ path: '../../' }) // npx browserslist "> 0.04%, last 2 versions,Firefox ESR,not dead" 查询兼容的浏览器
 const externalGlobalsConfig = {
   // vue: 'Vue',
@@ -110,6 +111,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
       exclude: ['./node\_modules/**', './dist'],
       cache: false
     }),
+    DefineOptions(),
     compression(),
     visualizer({
       open: true, // 注意这里要设置为true，否则无效

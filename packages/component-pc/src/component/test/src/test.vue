@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, getCurrentInstance } from 'vue'
 import { toKebabCase } from '../../../utils/common'
 defineOptions({
   name: 'YxTest'

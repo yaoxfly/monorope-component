@@ -12,17 +12,6 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "clean": "rm -rf node_modules **/*/node_modules"
   },
-  "peerDependencies": {
-    "vue": "^3.3.4"
-  },
-  "dependencies": {
-    "@vueuse/core": "^10.4.1",
-    "axios": "^1.5.1",
-    "element-plus": "2.3.14",
-    "pinia": "^2.1.6",
-    "qs": "^6.11.2",
-    "vue-router": "^4.2.5"
-  },
   "devDependencies": {
     "@types/node": "^20.8.2",
     "@typescript-eslint/eslint-plugin": "^6.7.4",

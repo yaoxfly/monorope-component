@@ -33,6 +33,13 @@ module.exports = {
         'missing-semicolon-after-character-reference': false
       }
     ],
+    'vue/max-attributes-per-line': 0,
+    'vue/first-attribute-linebreak': 0,
+    'vue/html-indent': 0,
+    'vue/html-closing-bracket-newline': 0,
+    // 'vue/component-definition-name-casing': 0,
+    'vue/no-unused-vars': 1,
+    'vue/no-use-v-if-with-v-for': 0,
 
     /* --ECMAScript 6 ES6-- */
     'no-useless-escape': 0, // 关闭转义
@@ -40,9 +47,11 @@ module.exports = {
       'error',
       { allowShortCircuit: true, allowTernary: true }
     ],
+    'no-multiple-empty-lines': 0,
 
     /* --typescript -- */
     '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/no-unused-vars': 1
+    '@typescript-eslint/no-unused-vars': 0 // 不写成0，setup里写的，在template里使用会报警告
+
   }
 }

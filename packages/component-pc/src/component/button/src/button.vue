@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { toKebabCase } from '../../../utils/common'
 defineOptions({
   name: 'YxButton'
