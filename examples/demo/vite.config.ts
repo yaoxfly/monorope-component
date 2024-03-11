@@ -178,6 +178,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
             'useStorage'
           ]
         }
+
       ],
       dts: '../../typings/auto-import.d.ts',
       vueTemplate: false,

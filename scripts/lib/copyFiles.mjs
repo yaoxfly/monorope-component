@@ -13,7 +13,7 @@ async function copyFiles ({ sourceDir, targetDir, fileExtensions, tips, exclude 
     for (const file of files) {
       const filePath = path.join(sourceDir, file)
       const fileStat = await stat(filePath)
-      if (exclude.includes(file)) return // 排除某个文件夹
+      if (exclude.includes(file)) continue // 排除某个文件夹
       if (fileStat.isDirectory()) {
         await copyFiles({ sourceDir: filePath, targetDir, fileExtensions, tips, exclude })
       } else {

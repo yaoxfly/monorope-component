@@ -2,7 +2,7 @@
   "name": "@yaoxfly/component-pc",
   "version": "1.0.0",
   "description": "A Component Library for Vue 3",
-  "main": "dist/cjs/index.js",
+  "main": "dist/cjs/component-pc/index.js",
   "module": "dist/es/component-pc/index.mjs",
   "unpkg": "dist/iife/index.js",
   "jsdelivr": "dist/iife/index.js",
@@ -13,7 +13,7 @@
     "theme-chalk/*.css",
     "theme-chalk/src/*.scss",
     "es/component-pc/*.css",
-    "cjs/*.css"
+    "cjs/component-pc/*.css"
   ],
   "files": [
     "dist"
@@ -22,7 +22,7 @@
   "exports": {
     ".": {
       "import": "./dist/es/component-pc/index.mjs",
-      "require": "./dist/cjs/index.js",
+      "require": "./dist/cjs/component-pc/index.js",
       "types": "./dist/types/index.d.ts"
     },
     "./*": "./*"
