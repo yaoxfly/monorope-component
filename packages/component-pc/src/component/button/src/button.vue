@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toKebabCase } from '../../../utils/common'
+import { toKebabCase } from '@yaoxfly/component-pc/src/utils/common'
 defineOptions({
   name: 'YxButton'
 })

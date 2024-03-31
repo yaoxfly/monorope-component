@@ -1,31 +1,22 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "es5",
     "module": "esnext",
     "composite": true, //生成额外的元数据文件，这些文件可以帮助构建工具（包括TypeScript自身的--build模式）更快地确定项目是否已经被构建。
-    "useDefineForClassFields": true, // 是否使用 Object.defineProperty 定义类实例属性
-    "strict": true, // 启用所有严格类型检查
-    "jsx": "preserve",
-    "sourceMap": true,
-    "isolatedModules": true, //控制是否将每个文件作为单独的模块处理。
-    "esModuleInterop": true, //通过创建命名空间实现CommonJS兼容性,使ts的import兼容cjs，不需要import * as
-    "lib": ["es5", "esnext", "dom"], //编译过程中需要引入的库文件的列表
-    "skipLibCheck": false, //是否在编译时跳过对声明文件（.d.ts 文件）的类型检查
-    "allowJs": true,
+    "lib": ["esnext", "DOM", "DOM.Iterable"], //编译过程中需要引入的库文件的列表
+    "types": ["vite/client"],
     "paths": {
-      "@/*": ["./examples/demo/src/*"]
-    },
-    "types": ["vite/client", "unplugin-vue-define-options/macros-global"]
+      "@yaoxfly/*": ["packages/*"],
+      "@/*": ["examples/demo/src/*"]
+    }
   },
   "include": [
     "packages",
     "examples",
-    "vite.config.ts",
+    "**/vite.config.ts",
     "typings/env.d.ts",
     "typings/auto-import.d.ts"
   ],
-  "exclude": ["node_modules", "dist", "examples/cdn-demo"],
-  "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue", ".d.ts"],
-  "allowSyntheticDefaultImports": true
+  "exclude": ["**/node_modules", "**/dist", "examples/cdn-demo"],
+  "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue", ".d.ts"]
 }

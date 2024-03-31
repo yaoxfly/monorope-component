@@ -6,9 +6,10 @@
   "author": "yaoxfly",
   "scripts": {
     "demo": "pnpm  -filter demo  dev",
-    "build:dev": "cross-env NODE_ENV=development ENV=development node ./scripts/build.mjs",
-    "build:test": "cross-env NODE_ENV=production  ENV=test   node  ./scripts/build.mjs ",
-    "build": "cross-env NODE_ENV=production  ENV=production  node  ./scripts/build.mjs",
+    "build-com:dev": "pnpm run build-type && cross-env NODE_ENV=development ENV=development node ./scripts/build.mjs",
+    "build-com:test": "pnpm run build-type && cross-env NODE_ENV=production  ENV=test   node  ./scripts/build.mjs",
+    "build-com": "pnpm run build-type && cross-env NODE_ENV=production  ENV=production  node  ./scripts/build.mjs",
+    "build-type": "tsc --project tsconfig.component-pc.json",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "clean": "rm -rf node_modules **/*/node_modules"
   },

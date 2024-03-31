@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.web.json",
+  "compilerOptions": {
+    "outDir": "packages/component-pc/dist/types",
+    "declaration": true,
+    "declarationMap": true // 为声明文件生成源映射
+  },
+  "include": ["packages", "typings/env.d.ts"],
+  "exclude": ["**/node_modules", "**/dist", "examples/cdn-demo"]
+}

@@ -6,7 +6,7 @@
   "module": "dist/es/component-pc/index.mjs",
   "unpkg": "dist/iife/index.js",
   "jsdelivr": "dist/iife/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/packages/component-pc/index.d.ts",
   "style": "dist/theme-chalk/index.css",
   "sideEffects": [
     "dist/*",

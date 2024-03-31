@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "dist",
     "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
+    "useDefineForClassFields": true, // 是否使用 Object.defineProperty 定义类实例属性
     "moduleResolution": "node",
-    "strict": true,
+    "strict": true, // 启用所有严格类型检查
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "skipLibCheck": true,
+    "isolatedModules": false, //控制是否将每个文件作为单独的模块处理
+    "esModuleInterop": true, // 通过创建命名空间实现CommonJS兼容性,使ts的import兼容cjs，不需要import * as
+    "allowSyntheticDefaultImports": true, //主要是为了类型检查,配合esModuleInterop使用
+    "skipLibCheck": false, //是否在编译时跳过对声明文件（.d.ts 文件）的类型检查
     "allowJs": true
   }
 }

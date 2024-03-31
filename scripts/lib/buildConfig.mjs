@@ -8,7 +8,6 @@ const rootDir = path.resolve(__dirname, '../../')
 const resolve = (...urlOrUrls) => {
   return path.resolve(rootDir, ...urlOrUrls)
 }
-
 // lib只输出样式
 const formats = ['iife', 'umd', 'cjs', 'es', 'lib']
 const buildConfig = {
@@ -30,9 +29,7 @@ const buildConfig = {
         qs: 'qs'
       },
       ...((format === 'es' || format === 'cjs') && { preserveModules: true, preserveModulesRoot: 'component' }),
-      ...(format === 'iife' || format === 'umd' || format === 'cjs') && { exports: 'named', name: 'ComponentPc' },
-      ...(format === 'iife' || format === 'umd') && { name: 'ComponentPc' }
-
+      ...(format === 'iife' || format === 'umd' || format === 'cjs') && { exports: 'named', name: 'ComponentPc' }
     })),
     plugins: [],
     external: [
@@ -43,5 +40,4 @@ const buildConfig = {
     ]
   }
 }
-
 export default buildConfig

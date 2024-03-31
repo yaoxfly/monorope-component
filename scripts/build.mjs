@@ -11,16 +11,14 @@ import autoExport from './lib/autoExport.mjs'
 import checker from 'vite-plugin-checker'
 import buildConfig from './lib/buildConfig.mjs'
 import copyFiles from './lib/copyFiles.mjs'
-
 const __filenameNew = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filenameNew)
-// 根目录
 const outDir = path.resolve(__dirname, '../packages/component-pc/dist')
+// 根目录
 const rootDir = path.resolve(__dirname, '../')
 export function resolve (...urlOrUrls) {
   return path.resolve(rootDir, ...urlOrUrls)
 }
-
 autoExport({
   path: 'packages/component-pc/src/component',
   output: 'packages/component-pc/src/component/index.ts'
@@ -29,13 +27,18 @@ autoExport({
 const baseConfig = defineConfig(env => {
   return {
     mode: env.VITE_APP_CURRENT_MODE,
+    resolve: {
+      alias: {
+        '@yaoxfly': resolve('packages')
+      }
+    },
     plugins: [
       vue(),
       dts({
         include: [resolve('packages/component-pc')],
-        outDir: resolve(outDir, 'types'),
+        outDir: resolve(outDir, 'types/packages/component-pc'),
         tsConfigFilePath: '../tsconfig.json',
-        rollupTypes: false
+        rollupTypes: true
       }),
       AutoImport({
         include: [
