@@ -212,14 +212,12 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
     //     }) as ComponentResolver
     //   ]
     // }),
-
     createStyleImportPlugin({
       libs: [
         {
           libraryName: '@yaoxfly/component-pc',
           esModule: false,
           resolveStyle: (name: string) => {
-            console.log(name)
             return `@yaoxfly/component-pc/dist/theme-chalk/${name}.css`
           }
         }
