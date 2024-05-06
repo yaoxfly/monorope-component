@@ -1,8 +1,11 @@
 import config from '@/config'
-// import { Button } from 'component-pc'
+import { Button as YxButton, Test as yxTest } from '@yaoxfly/component-pc'
 export default defineComponent({
   name: 'Home',
-
+  components: {
+    YxButton,
+    yxTest
+  },
   setup () {
     // 主题切换
     const setTheme = () => {
@@ -16,7 +19,6 @@ export default defineComponent({
       console.log(route.query, '传递给home页面的参数')
       return (
         <>
-
           <yx-button ></yx-button>
           <yx-test ></yx-test>
           <div class='tw-flex tw-justify-center  tw-items-center  tw-bg-gray-50  tw-text-black'>

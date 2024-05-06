@@ -15,13 +15,17 @@
   "author": "yaoxfly",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.3.4",
     "@vueuse/core": "^10.4.1",
+    "@yaoxfly/component-pc": "workspace:^",
     "axios": "^1.5.1",
     "element-plus": "2.3.14",
     "pinia": "^2.1.6",
     "qs": "^6.11.2",
-    "vue-router": "^4.2.5",
-    "@yaoxfly/component-pc": "workspace:^"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "unplugin-vue-components": "^0.26.0",
+    "vite-plugin-style-import": "^2.0.0"
   }
 }

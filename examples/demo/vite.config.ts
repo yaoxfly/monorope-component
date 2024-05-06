@@ -17,6 +17,9 @@ import browserslist from 'browserslist' // 统一js/css兼容性
 import checker from 'vite-plugin-checker'
 import externalGlobals from 'rollup-plugin-external-globals'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ComponentResolver } from 'unplugin-vue-components/types'
+import { createStyleImportPlugin } from 'vite-plugin-style-import'
 const browserslistConfig = browserslist.loadConfig({ path: '../../' }) // npx browserslist "> 0.04%, last 2 versions,Firefox ESR,not dead" 查询兼容的浏览器
 const externalGlobalsConfig = {
   // vue: 'Vue',
@@ -197,9 +200,33 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
     // progress(), //打包进度条，会覆盖掉打包详情信息，暂时不用了
     checker({
       typescript: true // 检查ts类型
-    })
+    }),
 
+    // tsx暂不支持
+    // Components({
+    //   dts: true,
+    //   resolvers: [
+    //     // 自定义解析器，用于解析你的组件库
+    //     ((name: string) => {
+    //       return { name, from: '@yaoxfly/component-pc' }
+    //     }) as ComponentResolver
+    //   ]
+    // }),
+
+    createStyleImportPlugin({
+      libs: [
+        {
+          libraryName: '@yaoxfly/component-pc',
+          esModule: false,
+          resolveStyle: (name: string) => {
+            console.log(name)
+            return `@yaoxfly/component-pc/dist/theme-chalk/${name}.css`
+          }
+        }
+      ]
+    })
   ],
+
   build: {
     target: 'es2015',
     outDir: './dist/',
