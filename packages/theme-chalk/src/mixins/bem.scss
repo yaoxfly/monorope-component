@@ -1,0 +1,21 @@
+@use './config.scss' as *;
+
+@mixin block($block) {
+  .#{$namespace}-#{$block} {
+    @content;
+  }
+}
+
+
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+// BEM 修饰符
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}

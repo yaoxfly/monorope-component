@@ -1,3 +1,5 @@
-.yx-test {
+@use './mixins/bem.scss' as *;
+
+@include block('test') {
   color: green;
 }

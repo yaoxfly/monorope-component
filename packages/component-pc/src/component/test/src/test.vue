@@ -1,16 +1,18 @@
 <template>
-  <div :class="className">
+  <div :class="componentName">
     {{ text }}
   </div>
 </template>
 
 <script lang="ts" setup>
-import { toKebabCase } from '../../../utils/common'
+import { useBem } from '../../../hook'
+const COMPONENT_NAME = 'YxTest'
 defineOptions({
-  name: 'YxTest'
+  name: COMPONENT_NAME
 })
-const className = computed(() => toKebabCase(getCurrentInstance()?.proxy?.$options.name))
-console.log(className)
+const { componentName, createBEM } = useBem({ name: COMPONENT_NAME })
+const bem = createBEM(COMPONENT_NAME)
+console.log(componentName)
 console.log('按需测试')
 const text = ref('按需测试')
 </script>

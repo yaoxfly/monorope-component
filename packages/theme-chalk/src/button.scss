@@ -1,3 +1,20 @@
-.yx-button {
+@use './mixins/bem.scss' as *;
+
+@include block('button') {
   color: red;
+
+  @include element('test') {
+    @include modifier('gray') {
+      color: gray;
+    }
+
+    @include modifier('small') {
+      font-size: 12px;
+    }
+  }
+
+
+  @include element('test-left') {
+    color: blue;
+  }
 }
