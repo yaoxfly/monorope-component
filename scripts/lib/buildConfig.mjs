@@ -10,6 +10,7 @@ const resolve = (...urlOrUrls) => {
 }
 // lib只输出样式
 const formats = ['iife', 'umd', 'cjs', 'es', 'lib']
+const namespace = 'yx'
 const buildConfig = {
   lib: {
     entry: resolve(entryDir, 'index.ts')
@@ -20,7 +21,14 @@ const buildConfig = {
       format: format === 'es' || format === 'lib' ? 'esm' : format,
       dir: resolve(outDir, format),
       entryFileNames: `[name].${format === 'es' ? 'mjs' : 'js'}`,
-      assetFileNames: '[name][extname]',
+      assetFileNames: (assetInfo) => {
+        if (assetInfo.name.endsWith('.css')) {
+          return assetInfo.name !== 'index.css' ? `${namespace}-[name][extname]` : '[name][extname]'
+        } else {
+          // 对其他类型的文件使用默认的命名方案
+          return 'assets/[name].[hash][extname]'
+        }
+      },
       sourcemap: format !== 'lib',
       globals: {
         vue: 'Vue',

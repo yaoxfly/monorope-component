@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url'
 import { build, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import DefineOptions from 'unplugin-vue-define-options/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer' // 性能分析，打开stats.html，查看打包情况
 import autoExport from './lib/autoExport.mjs'
@@ -71,7 +70,6 @@ const baseConfig = defineConfig(env => {
           globalsPropValue: true
         }
       }),
-      DefineOptions(),
       visualizer({
         open: true,
         gzipSize: true,
