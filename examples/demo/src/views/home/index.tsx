@@ -1,10 +1,10 @@
 import config from '@/config'
-import { Button as YxButton, Test as yxTest } from '@yaoxfly/component-pc'
+// import { YxButton, YxTest } from '@yaoxfly/component-pc'
 export default defineComponent({
   name: 'Home',
   components: {
-    YxButton,
-    yxTest
+    // YxButton,
+    // YxTest
   },
   setup () {
     // 主题切换
@@ -19,18 +19,18 @@ export default defineComponent({
       console.log(route.query, '传递给home页面的参数')
       return (
         <>
-          <yx-button ></yx-button>
+          <yx-button></yx-button>
           <yx-test ></yx-test>
           <div class='tw-flex tw-justify-center  tw-items-center  tw-bg-gray-50  tw-text-black'>
-              <span > 我是首页{config.server}</span>
+            <span > 我是首页{config.server}</span>
           </div>
 
           <div class='tw-container   tw-m-16  tw-text-large  tw-bg-primary tw-rounded ' >
-                容器1
+            容器1
           </div>
 
           <div class='tw-container  tw-m-16  tw-text-base  tw-bg-primary-10  tw-text-regular tw-border-base  tw-border tw-leading-32 ' >
-                容器2
+            容器2
           </div>
 
           <input v-model={input.value} class='tw-w-500 tw-border tw-border-solid tw-border-black' ></input>

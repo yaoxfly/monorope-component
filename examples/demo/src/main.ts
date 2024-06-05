@@ -5,10 +5,10 @@ import '@/assets/css/index.css'
 import ElementPlus from 'element-plus'
 // import { Button } from '@yaoxfly/component-pc'
 // console.log(Test)
-// import ComponentPc from '../../../packages/component-pc/index'
+import ComponentPc from '../../../packages/component-pc/index'
 createApp(App)
   .use(router)
   .use(createPinia())
   .use(ElementPlus)
-  // .use(Button)
+  .use(ComponentPc)
   .mount('#app')

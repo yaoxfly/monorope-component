@@ -16,7 +16,6 @@ import autoprefixer from 'autoprefixer'
 import browserslist from 'browserslist' // 统一js/css兼容性
 import checker from 'vite-plugin-checker'
 import externalGlobals from 'rollup-plugin-external-globals'
-import DefineOptions from 'unplugin-vue-define-options/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ComponentResolver } from 'unplugin-vue-components/types'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
@@ -114,7 +113,6 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
       exclude: ['./node\_modules/**', './dist'],
       cache: false
     }),
-    DefineOptions(),
     compression(),
     visualizer({
       open: true, // 注意这里要设置为true，否则无效
