@@ -1,10 +1,13 @@
 import config from '@/config'
+import { defineAsyncComponent, Suspense } from 'vue'
+import homeStyle from './home.module.scss'
 // import { YxButton, YxTest } from '@yaoxfly/component-pc'
 export default defineComponent({
   name: 'Home',
   components: {
     // YxButton,
     // YxTest
+    AsyncComponent: defineAsyncComponent(() => import('../test/child'))
   },
   setup () {
     // 主题切换
@@ -25,7 +28,7 @@ export default defineComponent({
             <span > 我是首页{config.server}</span>
           </div>
 
-          <div class='tw-container   tw-m-16  tw-text-large  tw-bg-primary tw-rounded ' >
+          <div class={['tw-container', 'tw-m-16', 'tw-text-large', 'tw-bg-primary', 'tw-rounded', homeStyle.container] } >
             容器1
           </div>
 
@@ -34,6 +37,13 @@ export default defineComponent({
           </div>
 
           <input v-model={input.value} class='tw-w-500 tw-border tw-border-solid tw-border-black' ></input>
+          <Suspense>
+            {{
+              default: <async-component />,
+              fallback: <div>Loading...</div>
+            }}
+          </Suspense>
+
         </>
       )
     }

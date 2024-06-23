@@ -2,7 +2,7 @@ import { useExpose } from '@/hooks/use-expose'
 const props = {
   show: {
     type: Boolean,
-    default: false
+    default: true
   },
   fun: Function
 }

@@ -2,7 +2,11 @@
 /*
  * This starter template is using Vue 3 <script setup> SFCs
  * Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+ *
  */
+
+ import { useCssModule } from 'vue'
+ const $style = useCssModule()
 </script>
 
 <template>
@@ -11,10 +15,12 @@
     src="./assets/logo.png"
   >
   <router-link to="/demo/1">
-    demo
+   <span :class="$style['module-style']">demo</span>
   </router-link>
   <router-view />
 </template>
+
+
 
 <style>
 #app {
@@ -26,4 +32,10 @@
   margin-top: 60px;
   user-select: none;
 }
+</style>
+
+<style module lang="scss">
+  .module-style{
+    color: green;
+  }
 </style>
