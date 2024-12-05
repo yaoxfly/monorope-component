@@ -48,10 +48,11 @@ module.exports = {
       { allowShortCircuit: true, allowTernary: true }
     ],
     'no-multiple-empty-lines': 0,
+    'space-before-function-paren': 0,
 
     /* --typescript -- */
     '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/no-unused-vars': 0 // 不写成0，setup里写的，在template里使用会报警告
-
+    '@typescript-eslint/no-unused-vars': 0, // 不写成0，setup里写的，在template里使用会报警告
+    '@typescript-eslint/no-unused-expressions': 0
   }
 }

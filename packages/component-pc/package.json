@@ -34,11 +34,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "axios": "^1.4.0",
-    "element-plus": "2.3.14",
-    "qs": "^6.11.2",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.5"
+    "axios": "*",
+    "element-plus": "*",
+    "qs": "*",
+    "vue": "*",
+    "vue-router": "*"
   },
   "dependencies": {
     "@yaoxfly/theme-chalk": "workspace:^"
