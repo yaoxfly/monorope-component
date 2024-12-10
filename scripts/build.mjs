@@ -98,7 +98,7 @@ async function main () {
       targetDir: resolve('packages/component-pc/dist/theme-chalk'),
       fileExtensions: ['.css'],
       tips: 'packages',
-      exclude: ['theme-chalk', 'cjs']
+      exclude: ['cjs']
     }
   )
 
